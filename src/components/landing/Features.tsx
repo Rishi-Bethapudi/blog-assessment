@@ -1,74 +1,71 @@
-import React from 'react';
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card';
-import { BookOpen, Users, Zap, TrendingUp } from 'lucide-react';
+import { Zap, Shield, Palette } from 'lucide-react';
+import { Card, CardContent } from '@/components/ui/card';
 
-export const Features = () => {
-  const features = [
-    {
-      icon: <BookOpen className="h-6 w-6" />,
-      title: 'Beautiful Editor',
-      description:
-        'Write with a distraction-free, intuitive editor designed for long-form content. Markdown support included.',
-    },
-    {
-      icon: <Users className="h-6 w-6" />,
-      title: 'Build Your Audience',
-      description:
-        'Connect with readers who share your interests. Grow your following with built-in discovery features.',
-    },
-    {
-      icon: <Zap className="h-6 w-6" />,
-      title: 'Lightning Fast',
-      description:
-        'Optimized for speed and performance. Your readers get instant page loads every time.',
-    },
-    {
-      icon: <TrendingUp className="h-6 w-6" />,
-      title: 'Analytics Dashboard',
-      description:
-        'Track your growth with detailed insights about views, engagement, and reader demographics.',
-    },
-  ];
+const features = [
+  {
+    icon: Zap,
+    title: 'Lightning Fast',
+    description:
+      'Built with Next.js 15 for optimal performance and instant page loads. Your readers will love the experience.',
+  },
+  {
+    icon: Shield,
+    title: 'Secure & Reliable',
+    description:
+      'Enterprise-grade security with automatic backups. Focus on writing while we handle the technical details.',
+  },
+  {
+    icon: Palette,
+    title: 'Beautiful Design',
+    description:
+      'Stunning themes that adapt to light and dark modes. Your content looks amazing on every device.',
+  },
+];
 
+export default function Features() {
   return (
-    <section id="features" className="py-20 sm:py-32 bg-white">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl mb-4">
+    <section className="py-20 md:py-28 lg:py-32">
+      <div className="container mx-auto px-4">
+        <div className="mx-auto max-w-2xl text-center mb-16">
+          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
             Everything You Need to Blog
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Powerful features that help you focus on what matters most—creating
-            great content.
+          <p className="mt-4 text-lg text-muted-foreground">
+            Powerful features that make blogging a joy, not a chore
           </p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {features.map((feature, index) => (
-            <Card
-              key={index}
-              className="border-gray-200 hover:shadow-lg transition-shadow duration-300"
-            >
-              <CardHeader>
-                <div className="w-12 h-12 rounded-lg bg-blue-50 flex items-center justify-center text-blue-600 mb-4">
-                  {feature.icon}
-                </div>
-                <CardTitle className="text-xl">{feature.title}</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <CardDescription className="text-gray-600">
-                  {feature.description}
-                </CardDescription>
-              </CardContent>
-            </Card>
-          ))}
+
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+          {features.map((feature) => {
+            const Icon = feature.icon;
+            return (
+              <Card
+                key={feature.title}
+                className="border-2 transition-all hover:shadow-lg hover:-translate-y-1"
+              >
+                <CardContent className="pt-8 pb-8 px-6">
+                  <div
+                    className="mb-4 inline-flex rounded-lg p-3"
+                    style={{
+                      backgroundColor: 'var(--color-primary)',
+                      opacity: 0.1,
+                    }}
+                  >
+                    <Icon
+                      className="h-6 w-6"
+                      style={{ color: 'var(--color-primary)' }}
+                    />
+                  </div>
+                  <h3 className="text-xl font-semibold mb-2">
+                    {feature.title}
+                  </h3>
+                  <p className="text-muted-foreground">{feature.description}</p>
+                </CardContent>
+              </Card>
+            );
+          })}
         </div>
       </div>
     </section>
   );
-};
+}

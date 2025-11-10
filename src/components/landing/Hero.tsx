@@ -1,57 +1,56 @@
-import React from 'react';
+import Link from 'next/link';
+import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Zap } from 'lucide-react';
 
-export const Hero = () => {
+export default function Hero() {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-gray-50 to-white py-20 sm:py-32">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-4xl text-center">
-          <div className="inline-flex items-center rounded-full border border-blue-100 bg-blue-50 px-4 py-2 text-sm font-medium text-blue-700 mb-8">
-            <Zap className="mr-2 h-4 w-4" />
-            Launch your blog in minutes
-          </div>
-          <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl lg:text-7xl mb-6">
-            Share Your Stories
-            <span className="block text-blue-600 mt-2">With the World</span>
+    <section className="relative overflow-hidden border-b bg-gradient-to-b from-background to-muted/20">
+      <div className="container mx-auto px-4 py-24 md:py-32 lg:py-40">
+        <div className="mx-auto max-w-3xl text-center">
+          <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">
+            Share Your Stories with{' '}
+            <span
+              className="inline-block"
+              style={{ color: 'var(--color-primary)' }}
+            >
+              the World
+            </span>
           </h1>
-          <p className="text-lg text-gray-600 sm:text-xl max-w-2xl mx-auto mb-10">
-            Create, publish, and grow your blog with our powerful platform.
-            Built for writers, readers, and everyone in between.
+          <p className="mt-6 text-lg text-muted-foreground sm:text-xl md:text-2xl">
+            A modern blogging platform designed for writers who want to focus on
+            creating great content. Simple, elegant, and powerful.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:justify-center">
             <Button
+              asChild
               size="lg"
-              className="bg-blue-600 hover:bg-blue-700 text-base px-8 h-12 w-full sm:w-auto"
+              className="text-base"
+              style={{
+                backgroundColor: 'var(--color-primary)',
+                color: 'white',
+              }}
             >
-              Start Writing Free
+              <Link href="/posts">
+                Explore Posts
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
             </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="text-base px-8 h-12 w-full sm:w-auto"
-            >
-              View Demo
+            <Button asChild variant="outline" size="lg" className="text-base">
+              <Link href="/dashboard">Get Started</Link>
             </Button>
-          </div>
-          <div className="mt-12 grid grid-cols-3 gap-8 max-w-2xl mx-auto">
-            <div>
-              <div className="text-3xl font-bold text-gray-900">50K+</div>
-              <div className="text-sm text-gray-600 mt-1">Active Writers</div>
-            </div>
-            <div>
-              <div className="text-3xl font-bold text-gray-900">2M+</div>
-              <div className="text-sm text-gray-600 mt-1">Monthly Readers</div>
-            </div>
-            <div>
-              <div className="text-3xl font-bold text-gray-900">100K+</div>
-              <div className="text-sm text-gray-600 mt-1">
-                Stories Published
-              </div>
-            </div>
           </div>
         </div>
       </div>
+
+      {/* Decorative blur elements */}
+      <div
+        className="absolute top-0 left-1/4 w-72 h-72 bg-primary/10 rounded-full blur-3xl -z-10"
+        aria-hidden="true"
+      />
+      <div
+        className="absolute bottom-0 right-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl -z-10"
+        aria-hidden="true"
+      />
     </section>
   );
-};
+}

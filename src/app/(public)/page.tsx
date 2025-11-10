@@ -1,20 +1,13 @@
-import React from 'react';
-import { Header } from '@/components/landing/Header';
-import { Hero } from '@/components/landing/Hero';
-import { Features } from '@/components/landing/Features';
-import { CTA } from '@/components/landing/CTA';
-import { Footer } from '@/components/landing/Footer';
+import Hero from '@/components/landing/Hero';
+import Features from '@/components/landing/Features';
+import CTA from '@/components/landing/CTA';
 
-export default function LandingPage() {
+export default function HomePage() {
   return (
-    <div className="min-h-screen bg-white">
-      <Header />
-      <main>
-        <Hero />
-        <Features />
-        <CTA />
-      </main>
-      <Footer />
-    </div>
+    <main className="flex-1">
+      <Hero />
+      <Features />
+      <CTA />
+    </main>
   );
 }
